@@ -19,14 +19,14 @@ export const projects: Project[] = [
 		slug: 'support-intelligence-rag-platform',
 		category: 'industry',
 		summary:
-			'Built a fully local retrieval workflow for technical support teams to search historical ticket data, surface likely resolutions, and keep sensitive support knowledge on internal infrastructure.',
+			'Engineered a production-grade retrieval-augmented generation system using LangGraph to orchestrate multi-agent workflows for automated technical support querying.',
 		organization: 'Retail Realm Distribution',
 		dates: 'May 2025 - Aug 2025',
-		stack: ['Python', 'LangGraph', 'Azure Blob Storage', 'SQL Server', 'PySpark', 'ChromaDB'],
+		stack: ['Python', 'LangGraph', 'PySpark', 'SQL Server', 'Azure Blob Storage'],
 		impact:
-			'Reduced average ticket resolution time by 35% through better retrieval quality and more grounded support responses.',
+			'Built scalable PySpark pipelines over historical ticket data and analyzed failure modes in LLM outputs to improve resolution efficiency by 35%.',
 		links: [],
-		featured: true,
+		featured: false,
 		visibility: 'public-safe',
 	},
 	{
@@ -34,12 +34,12 @@ export const projects: Project[] = [
 		slug: 'branch-network-geospatial-analysis',
 		category: 'industry',
 		summary:
-			'Used ArcGIS and statistical network analysis to map bank branch relationships, evaluate coverage gaps, and support ATM placement decisions for senior stakeholders.',
+			'Conducted geospatial analysis using ArcGIS to visualize bank ATM networks and perform demographic catchment-area analysis for expansion and optimization decisions.',
 		organization: 'Synechron',
-		dates: 'Consulting engagement',
-		stack: ['ArcGIS', 'Geospatial Analysis', 'Statistical Modeling'],
+		dates: 'Consulting project',
+		stack: ['ArcGIS', 'Geospatial Analysis', 'Demographic Analysis'],
 		impact:
-			'Turned spatial and network data into planning insight that could guide branch strategy and physical service coverage.',
+			'Turned spatial and demographic signals into practical recommendations for ATM placement and network optimization.',
 		links: [],
 		featured: false,
 		visibility: 'public-safe',
@@ -49,57 +49,72 @@ export const projects: Project[] = [
 		slug: 'flight-collision-detection-layer',
 		category: 'industry',
 		summary:
-			'Processed high-throughput FlightRadar24 data to construct a geometry-based aircraft collision detection algorithm for cases where onboard TCAS data is unavailable.',
+			'Processed high-throughput FlightRadar24 data to design and implement a geometry-based aircraft collision detection algorithm.',
 		organization: 'IATA',
-		dates: 'Consulting engagement',
+		dates: 'Consulting project',
 		stack: ['Python', 'FlightRadar24 Data', 'Geometry', 'Safety Analytics'],
 		impact:
-			'Created a secondary analytical safety layer for collision awareness under degraded information conditions.',
+			'Provided a ground-based safety layer for scenarios where onboard TCAS data is unavailable.',
 		links: [],
 		featured: false,
 		visibility: 'public-safe',
-	},
-	{
-		title: 'Intelligent Credit Risk Portfolio Dashboard',
-		slug: 'intelligent-credit-risk-portfolio-dashboard',
-		category: 'industry',
-		summary:
-			'Designed an interactive credit risk dashboard around a predictive lending workflow, combining model outputs with KPI reporting for portfolio-level decision support.',
-		organization: 'Applied analytics project',
-		dates: 'Project',
-		stack: ['Python', 'Scikit-learn', 'Power BI', 'DAX'],
-		impact:
-			'Modeled more than 100,000 LendingClub loan records and packaged the results into a business-facing dashboard.',
-		links: [],
-		featured: false,
-		visibility: 'public',
 	},
 	{
 		title: 'Farm Pond Causal Impact Analysis',
 		slug: 'farm-pond-causal-impact-analysis',
 		category: 'research',
 		summary:
-			'Automated geospatial satellite workflows to study how farm ponds affect crop health and water security, combining image processing with causal inference methods.',
+			'Investigated the causal impact of farm ponds on agricultural productivity using high-resolution satellite imagery processed through the Google Earth Engine Python API.',
 		organization: 'Indian Institute of Technology Delhi',
 		dates: 'Jun 2024 - Aug 2024',
-		stack: ['Google Earth Engine', 'Python', 'Differences-in-Differences', 'Double ML', 'Geospatial Analysis'],
+		stack: ['Google Earth Engine', 'Python', 'Differences-in-Differences', 'Double Machine Learning'],
 		impact:
-			'Contributed to a paper presented at ACM COMPASS by quantifying treatment effects across vegetation, soil moisture, and crop outcomes.',
+			'Implemented counterfactual matching and analyzed treatment effects on soil moisture and vegetation indices, contributing to a paper presented at ACM COMPASS.',
 		links: [],
-		featured: true,
+		featured: false,
 		visibility: 'public',
 	},
 	{
-		title: 'Hate Speech Dataset Alignment Pipeline',
-		slug: 'hate-speech-dataset-alignment-pipeline',
+		title: 'Hate Speech Data Pipeline',
+		slug: 'hate-speech-data-pipeline',
 		category: 'research',
 		summary:
-			'Developed an ETL framework for aligning heterogeneous hate speech datasets and used LLM-based semantic matching to normalize annotation schemas across sources.',
-		organization: 'Mila Complex Data Lab',
+			'Developed an ETL framework for aligning multilingual toxicity datasets and used an LLM for semantic schema matching across heterogeneous annotation labels.',
+		organization: 'Prof. Reihaneh Rabbany, Mila',
 		dates: 'Research project',
-		stack: ['ETL', 'LLMs', 'GPT-3.5', 'Schema Matching', 'Python'],
+		stack: ['Python', 'ETL', 'LLMs', 'Parquet', 'Schema Matching'],
 		impact:
-			'Improved reproducibility for downstream research by turning inconsistent label taxonomies into a more unified dataset interface.',
+			'Implemented a schema-validated Parquet pipeline that improved storage, retrieval, and reproducibility for future work in the Mila Complex Data Lab.',
+		links: [],
+		featured: false,
+		visibility: 'public',
+	},
+	{
+		title: 'Temporal Graph Neural Networks',
+		slug: 'temporal-graph-neural-networks',
+		category: 'research',
+		summary:
+			'Benchmarked a novel time-window-based training strategy to address temporal information loss in dynamic link prediction across multiple models and datasets.',
+		organization: 'COMP 511 Project',
+		dates: 'Course project',
+		stack: ['PyTorch', 'Graph Neural Networks', 'Dynamic Link Prediction', 'Slurm', 'Compute Canada'],
+		impact:
+			'Ran ablation studies on Compute Canada HPC clusters and showed that sliding-window training improved link-prediction accuracy by up to 15% over batch baselines.',
+		links: [],
+		featured: false,
+		visibility: 'public',
+	},
+	{
+		title: 'Curriculum Learning in RL Environments',
+		slug: 'curriculum-learning-in-rl-environments',
+		category: 'research',
+		summary:
+			'Implemented a curriculum learning framework to train PPO agents in the Google Research Football environment, scaling task complexity from 1v1 to 11v11.',
+		organization: 'COMP 579 Project',
+		dates: 'Course project',
+		stack: ['Reinforcement Learning', 'PPO', 'Google Research Football', 'Python'],
+		impact:
+			'Authored a short paper evaluating the trade-offs between sample efficiency and convergence stability for scheduled reward shaping versus task-based progression.',
 		links: [],
 		featured: false,
 		visibility: 'public',
@@ -112,11 +127,11 @@ export const projects: Project[] = [
 			'Built a full-stack library management product with role-based access control, a multi-state borrowing workflow, and an AI-powered search and metadata assistant.',
 		organization: 'Personal project',
 		dates: '2025',
-		stack: ['Next.js', 'FastAPI', 'MySQL', 'Auth0', 'LangChain', 'Vercel', 'Render', 'Aiven'],
+		stack: ['Next.js', 'FastAPI', 'MySQL', 'Auth0', 'LangChain'],
 		impact:
-			'Combined product polish with practical AI workflows by enriching book metadata and handling fallback retrieval paths cleanly.',
+			'Combined product polish with practical AI workflows by enriching book metadata and handling fallback retrieval cleanly.',
 		links: [{ label: 'Live site', href: 'https://bookflow-olive.vercel.app/', external: true }],
-		featured: true,
+		featured: false,
 		visibility: 'public',
 	},
 	{
@@ -124,19 +139,47 @@ export const projects: Project[] = [
 		slug: 'insideradar',
 		category: 'personal',
 		summary:
-			'Built a web application that streams and ranks live Polymarket data, using residual analysis and outlier detection to highlight potentially insider-driven bets.',
-		organization: 'Personal project',
+			'Built a full-stack web application that curates Polymarket trading data to identify and rank potentially insider-driven bets using residual analysis on an XGBoost model and a React frontend.',
+		organization: 'McHacks Best Beginner Project',
 		dates: '2025',
-		stack: ['Polars', 'FastAPI', 'SQLAlchemy', 'XGBoost', 'Auth0'],
+		stack: ['React', 'Polars', 'FastAPI', 'SQLAlchemy', 'XGBoost', 'Auth0'],
 		impact:
-			'Designed the backend and modeling pipeline so real-time market data could be turned into a usable ranking signal for investigation.',
+			'Designed the data-science pipeline and backend architecture using Polymarket APIs, Polars, FastAPI, SQLAlchemy, and Auth0.',
+		links: [],
+		featured: false,
+		visibility: 'public',
+	},
+	{
+		title: 'Intelligent Credit Risk Portfolio Dashboard',
+		slug: 'intelligent-credit-risk-portfolio-dashboard',
+		category: 'personal',
+		summary:
+			'Designed an interactive credit risk dashboard around a predictive lending workflow, combining model outputs with KPI reporting for portfolio-level decision support.',
+		organization: 'Personal project',
+		dates: 'Course project',
+		stack: ['Python', 'Scikit-learn', 'Power BI', 'DAX'],
+		impact:
+			'Modeled more than 100,000 LendingClub loan records and packaged the results into a business-facing dashboard.',
+		links: [],
+		featured: false,
+		visibility: 'public',
+	},
+	{
+		title: 'Chess Engine',
+		slug: 'chess-engine',
+		category: 'personal',
+		summary:
+			'Developed a two-player chess game in Java, implementing full game rules and turn-based logic through a modular object-oriented design.',
+		organization: 'Personal project',
+		dates: 'Course project',
+		stack: ['Java', 'JavaFX', 'JUnit', 'Object-Oriented Design'],
+		impact:
+			'Built an interactive JavaFX GUI for board visualization and wrote JUnit tests to validate core game logic and edge cases.',
 		links: [],
 		featured: false,
 		visibility: 'public',
 	},
 ]
-
-export const featuredProjects = projects.filter((project) => project.featured)
 
 export const projectCategories: Array<{
 	id: ProjectCategory
@@ -147,43 +190,40 @@ export const projectCategories: Array<{
 	{
 		id: 'industry',
 		label: 'Industry',
-		headline: 'Production-minded systems for real business constraints',
-		description:
-			'Projects shaped by business workflows, operational constraints, and public-safe summaries of measurable outcomes.',
+		headline: 'Production-grade systems for real business constraints',
+		description: '',
 	},
 	{
 		id: 'research',
 		label: 'Research',
-		headline: 'Empirical work with causal, geospatial, and dataset design depth',
-		description:
-			'Projects where data methodology matters as much as implementation, from remote sensing pipelines to reproducible schema alignment.',
+		headline: 'Course and lab work across causal inference, graph learning, and reinforcement learning',
+		description: '',
 	},
 	{
 		id: 'personal',
 		label: 'Personal',
-		headline: 'End-to-end products built from curiosity to shipped interface',
-		description:
-			'Independent builds that combine model logic, backend systems, and product thinking into complete experiences.',
+		headline: 'Independent products and technical builds',
+		description: '',
 	},
 ]
 
 export const experiences: ExperienceEntry[] = [
 	{
-		role: 'Software Developer Intern, Machine Learning',
+		role: 'Software Developer Intern - Machine Learning',
 		organization: 'Retail Realm Distribution',
-		location: 'Remote',
+		location: 'Sonoma, California (Remote)',
 		dates: 'May 2025 - Aug 2025',
 		summary:
-			'Built production-facing retrieval and data infrastructure for support workflows, from storage and vector indexing to agentic answer generation.',
+			'Engineered a production-grade RAG system and supporting PySpark pipelines for automated technical support querying.',
 		relatedProjectSlugs: ['support-intelligence-rag-platform'],
 	},
 	{
 		role: 'Statistical Modelling Research Intern',
-		organization: 'Indian Institute of Technology Delhi',
+		organization: 'Indian Institute of Technology (IIT) Delhi',
 		location: 'New Delhi, India',
 		dates: 'Jun 2024 - Aug 2024',
 		summary:
-			'Studied the effect of farm ponds on crop outcomes using geospatial pipelines and causal inference techniques grounded in remote sensing data.',
+			'Studied the causal impact of farm ponds on agricultural productivity through high-resolution satellite imagery and modern causal ML methods.',
 		relatedProjectSlugs: ['farm-pond-causal-impact-analysis'],
 	},
 	{
@@ -192,16 +232,25 @@ export const experiences: ExperienceEntry[] = [
 		location: 'Montreal, Canada',
 		dates: 'Sept 2025 - Present',
 		summary:
-			'Developing embedded algorithms for real-time mapping and object detection on an autonomous drone platform.',
+			'Designing embedded algorithms for real-time mapping, object recognition, and obstacle avoidance on NVIDIA Jetson for the SUAS competition.',
 		relatedProjectSlugs: [],
 	},
 	{
-		role: 'Co-coordinator',
-		organization: 'The Yellow Door',
+		role: 'Co-coordinator, Rabbit Hole Kitchen',
+		organization: 'The Yellow Door Org',
 		location: 'Montreal, Canada',
 		dates: 'Sept 2025 - Present',
 		summary:
-			'Manage and cook for a weekly community kitchen serving underprivileged students and seniors.',
+			'Overseeing the operations of a weekly community kitchen geared toward underprivileged students and seniors.',
+		relatedProjectSlugs: [],
+	},
+	{
+		role: 'Technical Project Manager, MAIS 202',
+		organization: 'McGill AI Society',
+		location: 'Montreal, Canada',
+		dates: 'Oct 2024 - Apr 2025',
+		summary:
+			'Designed and graded machine learning assignments while providing technical guidance to more than 50 student participants.',
 		relatedProjectSlugs: [],
 	},
 ]
@@ -212,36 +261,36 @@ export const education: EducationEntry[] = [
 		degree: 'Bachelor of Arts in Computer Science and Statistics',
 		location: 'Montreal, Canada',
 		dates: 'Jan 2022 - Apr 2026',
-		description: "Dean's Honor List, GPA 3.85/4.00.",
+		description: 'Statistics and Computer Science student at McGill University.',
+		honors: ["Dean's Honor List", 'Morris Wilson Renewable Scholarship'],
+		coursework: [
+			'Network Science',
+			'Reinforcement Learning',
+			'Applied Machine Learning',
+			'Software Design',
+			'Stochastic Processes',
+			'Communication History',
+		],
+		researchInterests: [
+			'AI for humanity',
+			'Causal ML',
+			'Bayesian methods',
+			'Interpretability',
+		],
 	},
 ]
 
 export const skillGroups: SkillGroup[] = [
 	{
 		title: 'Languages',
-		items: ['Python', 'SQL', 'Java', 'R', 'JavaScript'],
+		items: ['Python', 'R', 'Java', 'SQL', 'C++', 'Bash', 'MATLAB'],
 	},
 	{
-		title: 'Data and ML',
-		items: [
-			'SQL Server',
-			'PySpark',
-			'Databricks',
-			'Polars',
-			'Pandas',
-			'Scikit-learn',
-			'PyTorch',
-			'Keras',
-			'LangChain',
-			'LangGraph',
-			'Ollama',
-			'Vector DB',
-			'Power BI',
-			'Tableau',
-		],
+		title: 'ML and Data',
+		items: ['PyTorch', 'PySpark', 'LangChain', 'Polars', 'Databricks', 'Scikit-learn', 'OpenCV'],
 	},
 	{
-		title: 'Deployment',
-		items: ['Git', 'Docker', 'Vercel', 'Render', 'Streamlit'],
+		title: 'Systems and Tools',
+		items: ['Git', 'Docker', 'Linux', 'HPC (Slurm)', 'ArcGIS', 'Google Earth Engine', 'SQL Server'],
 	},
 ]

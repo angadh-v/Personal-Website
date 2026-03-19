@@ -1,0 +1,46 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import SectionHeading from '@/components/ui/SectionHeading.astro'
+import { education } from '@/data/portfolio'
+
+const currentEducation = education[0]
+---
+
+<Layout title='Education | Angadh Verma'>
+	<section class='border-b border-base-content/10 pb-12'>
+		<SectionHeading
+			eyebrow='Education'
+			title={currentEducation.school}
+			description={`${currentEducation.degree} | ${currentEducation.dates}`}
+		/>
+	</section>
+
+	<div class='space-y-10 py-12'>
+		<section class='border border-base-content/10 bg-base-100 p-6'>
+			<p class='font-medium text-base-content/60'>Overview</p>
+			<div class='mt-4 space-y-3 text-base-content/75'>
+				<p>{currentEducation.location}</p>
+				<p>{currentEducation.description}</p>
+			</div>
+		</section>
+
+		<section class='border border-base-content/10 bg-base-100 p-6'>
+			<p class='font-medium text-base-content/60'>Honors and Awards</p>
+			<ul class='mt-4 space-y-2 text-base-content/75'>
+				{currentEducation.honors.map((item) => (
+					<li>{item}</li>
+				))}
+			</ul>
+		</section>
+
+		<section class='border border-base-content/10 bg-base-100 p-6'>
+			<p class='font-medium text-base-content/60'>Selected Coursework</p>
+			<p class='mt-4 text-base-content/75'>{currentEducation.coursework.join(', ')}</p>
+		</section>
+
+		<section class='border border-base-content/10 bg-base-100 p-6'>
+			<p class='font-medium text-base-content/60'>Research Interests</p>
+			<p class='mt-4 text-base-content/75'>{currentEducation.researchInterests.join(', ')}</p>
+		</section>
+	</div>
+</Layout>

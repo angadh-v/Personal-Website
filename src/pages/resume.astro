@@ -10,10 +10,10 @@ import { template } from '@/settings'
 		<SectionHeading
 			eyebrow='Resume'
 			title='Resume'
-			description='A web version of the one-page resume.'
+			description='A web version of the current CV.'
 		/>
 		<div class='mt-6 flex flex-wrap gap-3'>
-			<a href={`${template.base}/resume-angadh-verma.pdf`} class='btn btn-secondary' download>
+			<a href={`${template.base}/Angadh-CV.pdf`} class='btn btn-secondary' download>
 				Download PDF
 			</a>
 			<a href={`mailto:${contact.email}`} class='btn btn-outline'>
@@ -56,12 +56,15 @@ import { template } from '@/settings'
 		<section class='space-y-10'>
 			<div class='border border-base-content/10 bg-base-100 p-6'>
 				<p class='font-medium text-base-content/60'>Education</p>
-				<div class='mt-5 space-y-3'>
+				<div class='mt-5 space-y-4'>
 					<h2 class='text-lg font-bold'>{education[0].degree}</h2>
 					<p>{education[0].school}</p>
 					<p class='text-base-content/70'>{education[0].location}</p>
 					<p class='text-base-content/70'>{education[0].dates}</p>
 					<p class='text-base-content/75'>{education[0].description}</p>
+					<p class='text-base-content/75'>
+						<strong class='font-medium text-base-content/80'>Honors:</strong> {education[0].honors.join(', ')}
+					</p>
 				</div>
 			</div>
 

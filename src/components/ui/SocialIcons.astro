@@ -3,6 +3,7 @@ import Envelope from '@/assets/social-icons/envelope.svg'
 import GitHub from '@/assets/social-icons/github.svg'
 import GitLab from '@/assets/social-icons/gitlab.svg'
 import LinkedIn from '@/assets/social-icons/linkedin-in.svg'
+import ResearchGate from '@/assets/social-icons/researchgate.svg'
 import Scholar from '@/assets/social-icons/google-scholar.svg'
 import X from '@/assets/social-icons/x-twitter.svg'
 import Bluesky from '@/assets/social-icons/bluesky.svg'
@@ -59,6 +60,13 @@ const calculatedContainerSize = activeSocial.length <= 5 ? 'size-12' : activeSoc
 	{social.linkedin !== '' &&
 		<a href={social.linkedin} target="_blank" title='LinkedIn' class={`${calculatedContainerSize} inline-flex items-center justify-center rounded-xl hover:bg-primary/20 transition-all duration-300`}>
 			<LinkedIn class={calculatedIconSize} fill="currentColor" />
+		</a>
+	}
+
+	<!-- ResearchGate -->
+	{social.researchgate !== '' &&
+		<a href={social.researchgate} target="_blank" title='ResearchGate' class={`${calculatedContainerSize} inline-flex items-center justify-center rounded-xl hover:bg-primary/20 transition-all duration-300`}>
+			<ResearchGate class={calculatedIconSize} fill="currentColor" />
 		</a>
 	}
 

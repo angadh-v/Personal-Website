@@ -4,6 +4,7 @@ import ProjectCard from '@/components/ui/ProjectCard.astro'
 import SectionHeading from '@/components/ui/SectionHeading.astro'
 import { projectCategories, projects } from '@/data/portfolio'
 
+const defaultCategory = projectCategories[0]?.id ?? 'industry'
 const projectsByCategory = projectCategories.map((category) => ({
 	...category,
 	projects: projects.filter((project) => project.category === category.id),
@@ -17,18 +18,28 @@ const projectsByCategory = projectCategories.map((category) => ({
 			title='Projects'
 			description='Industry, research, and personal work are grouped separately.'
 		/>
-		<div class='mt-6 flex flex-wrap gap-4 text-base'>
+		<div class='mt-6 tabs tabs-boxed w-fit'>
 			{projectCategories.map((category) => (
-				<a href={`#${category.id}`} class='link link-hover'>
+				<button
+					type='button'
+					class='tab'
+					data-project-tab={category.id}
+					aria-controls={`panel-${category.id}`}
+				>
 					{category.label}
-				</a>
+				</button>
 			))}
 		</div>
 	</section>
 
-	<div class='space-y-14 py-12'>
+	<div class='py-12'>
 		{projectsByCategory.map((group) => (
-			<section id={group.id} class='scroll-mt-28'>
+			<section
+				id={`panel-${group.id}`}
+				class='max-w-3xl'
+				data-project-panel={group.id}
+				hidden={group.id !== defaultCategory}
+			>
 				<div class='max-w-2xl'>
 					<p class='text-sm font-medium text-base-content/60'>{group.label}</p>
 					<h2 class='mt-2 text-3xl font-bold'>{group.headline}</h2>
@@ -43,3 +54,50 @@ const projectsByCategory = projectCategories.map((category) => ({
 		))}
 	</div>
 </Layout>
+
+<script is:inline>
+	const setupProjectTabs = () => {
+		const tabs = Array.from(document.querySelectorAll('[data-project-tab]'));
+		const panels = Array.from(document.querySelectorAll('[data-project-panel]'));
+
+		if (tabs.length === 0 || panels.length === 0) {
+			return;
+		}
+
+		const activate = (id) => {
+			tabs.forEach((tab) => {
+				const isActive = tab.dataset.projectTab === id;
+				tab.classList.toggle('tab-active', isActive);
+				tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+			});
+
+			panels.forEach((panel) => {
+				panel.hidden = panel.dataset.projectPanel !== id;
+			});
+		};
+
+		const hash = window.location.hash.replace('#', '');
+		const validHash = tabs.some((tab) => tab.dataset.projectTab === hash);
+		activate(validHash ? hash : tabs[0].dataset.projectTab);
+
+		tabs.forEach((tab) => {
+			if (tab.dataset.bound === 'true') {
+				return;
+			}
+
+			tab.dataset.bound = 'true';
+			tab.addEventListener('click', () => {
+				const id = tab.dataset.projectTab;
+				if (!id) {
+					return;
+				}
+
+				activate(id);
+				history.replaceState(null, '', `${window.location.pathname}#${id}`);
+			});
+		});
+	};
+
+	setupProjectTabs();
+	document.addEventListener('astro:page-load', setupProjectTabs);
+</script>

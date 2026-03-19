@@ -1,15 +1,17 @@
 ---
+import { Image } from 'astro:assets'
 import { profile } from '../../settings'
 import SocialIcons from './SocialIcons.astro'
 import { withBase } from '@/lib/utils'
+import ProfilePicture from '@/assets/profile-picture.jpg'
 
-const { fullName, title, initials, location } = profile
+const { fullName, title, location } = profile
 const navItems = [
 	{ label: 'Home', href: withBase('/') },
 	{ label: 'Projects', href: withBase('/projects') },
 	{ label: 'Experience', href: withBase('/experience') },
+	{ label: 'Education', href: withBase('/education') },
 	{ label: 'Resume', href: withBase('/resume') },
-	{ label: 'Contact', href: withBase('/#contact') },
 ]
 ---
 <aside
@@ -18,9 +20,11 @@ const navItems = [
 	<div class='my-8 flex h-full flex-col justify-between'>
 		<div>
 			<div class='flex flex-col items-center text-center'>
-				<div class='mask mask-circle grid size-32 place-items-center bg-base-300 text-4xl font-bold text-base-content'>
-					{initials}
-				</div>
+				<Image
+					class='mask mask-circle size-32 object-cover'
+					src={ProfilePicture}
+					alt={`Profile picture of ${fullName}`}
+				/>
 				<h1 class='mt-8 hidden text-lg font-black lg:block'>{fullName}</h1>
 				<p class='mt-2 text-sm text-base-content/70'>{title}</p>
 				<p class='mt-2 text-sm text-base-content/60'>{location}</p>

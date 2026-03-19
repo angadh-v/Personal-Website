@@ -1,16 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import SectionHeading from '@/components/ui/SectionHeading.astro'
-import ProjectCard from '@/components/ui/ProjectCard.astro'
-import ExperienceTimeline from '@/components/ui/ExperienceTimeline.astro'
 import SocialIcons from '@/components/ui/SocialIcons.astro'
 import { profile, template } from '@/settings'
 import {
 	contact,
 	education,
-	experiences,
-	featuredProjects,
-	projectCategories,
 } from '@/data/portfolio'
 ---
 
@@ -33,7 +28,7 @@ import {
 				<a href={`${template.base}/projects`} class='btn btn-secondary'>
 					View Projects
 				</a>
-				<a href={`${template.base}/resume-angadh-verma.pdf`} download class='btn btn-outline'>
+				<a href={`${template.base}/Angadh-CV.pdf`} download class='btn btn-outline'>
 					Download Resume
 				</a>
 			</div>
@@ -50,51 +45,10 @@ import {
 		</div>
 	</section>
 
-	<section class='border-b border-base-content/10 py-12'>
-		<SectionHeading
-			eyebrow='Selected Work'
-			title='Featured projects'
-			description='One selected project from each category.'
-		/>
-		<div class='mt-8 grid gap-6 lg:grid-cols-3'>
-			{featuredProjects.map((project) => (
-				<ProjectCard project={project} compact={true} />
-			))}
-		</div>
-	</section>
-
-	<section class='border-b border-base-content/10 py-12'>
-		<SectionHeading
-			eyebrow='Projects'
-			title='Browse by category'
-			description='Projects are separated into industry, research, and personal work.'
-		/>
-		<div class='mt-6 flex flex-wrap gap-4 text-base'>
-			{projectCategories.map((category) => (
-				<a href={`${template.base}/projects#${category.id}`} class='link link-hover'>
-					{category.label}
-				</a>
-			))}
-		</div>
-	</section>
-
-	<section class='border-b border-base-content/10 py-12'>
-		<SectionHeading
-			eyebrow='Experience'
-			title='Recent experience'
-		/>
-		<div class='mt-8'>
-			<ExperienceTimeline entries={experiences.slice(0, 3)} />
-		</div>
-		<div class='mt-6'>
-			<a href={`${template.base}/experience`} class='link link-hover'>View full experience</a>
-		</div>
-	</section>
-
 	<section class='py-12' id='contact'>
 		<SectionHeading
 			eyebrow='Contact'
-			title='Contact'
+			title=''
 		/>
 		<div class='mt-6 space-y-3 text-base-content/75'>
 			<p>{contact.email}</p>
@@ -102,8 +56,8 @@ import {
 			<p>{contact.location}</p>
 			<p>{education[0].school}</p>
 			<div class='pt-2'>
-				<a href={`${template.base}/resume-angadh-verma.pdf`} class='link link-hover' download>
-					Download resume PDF
+				<a href={`${template.base}/Angadh-CV.pdf`} class='link link-hover' download>
+					Download CV PDF
 				</a>
 			</div>
 		</div>

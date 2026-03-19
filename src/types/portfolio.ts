@@ -37,6 +37,9 @@ export interface EducationEntry {
 	location: string
 	dates: string
 	description: string
+	honors: string[]
+	coursework: string[]
+	researchInterests: string[]
 }
 
 export interface SkillGroup {

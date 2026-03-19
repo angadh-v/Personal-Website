@@ -1,18 +1,19 @@
 export const profile = {
 	fullName: 'Angadh Verma',
 	initials: 'AV',
-	title: 'Software engineer building ML products, research systems, and full-stack tools.',
+	title: '',
 	location: 'Montreal, Canada',
 	heroSummary:
-		'I design production-facing ML workflows, research pipelines, and polished software products. My work spans industry systems, causal analysis, and personal builds that turn messy data into usable decisions.',
+		'I love working with data. \n My work spans industry, research, and personal projects that turn messy data into cool insights.',
 }
 
 export const social = {
 	email: 'angadh.verma@mail.mcgill.ca',
-	linkedin: '',
+	linkedin: 'https://www.linkedin.com/in/angadh-v/',
 	x: '',
 	bluesky: '',
-	github: '',
+	github: 'https://github.com/angadh-v',
+	researchgate: 'https://www.researchgate.net/profile/Angadh-Verma',
 	gitlab: '',
 	scholar: '',
 	inspire: '',

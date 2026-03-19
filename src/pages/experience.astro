@@ -2,7 +2,7 @@
 import Layout from '@/layouts/Layout.astro'
 import ExperienceTimeline from '@/components/ui/ExperienceTimeline.astro'
 import SectionHeading from '@/components/ui/SectionHeading.astro'
-import { education, experiences } from '@/data/portfolio'
+import { experiences } from '@/data/portfolio'
 ---
 
 <Layout title='Experience | Angadh Verma'>
@@ -15,17 +15,5 @@ import { education, experiences } from '@/data/portfolio'
 
 	<section class='py-12'>
 		<ExperienceTimeline entries={experiences} />
-	</section>
-
-	<section class='border-t border-base-content/10 py-12'>
-		<SectionHeading
-			eyebrow='Education'
-			title={education[0].school}
-			description={`${education[0].degree} | ${education[0].dates}`}
-		/>
-		<div class='mt-6 border border-base-content/10 bg-base-100 p-6'>
-			<p>{education[0].location}</p>
-			<p class='mt-3 text-base-content/75'>{education[0].description}</p>
-		</div>
 	</section>
 </Layout>
