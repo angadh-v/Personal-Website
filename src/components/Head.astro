@@ -1,0 +1,108 @@
+---
+import { template } from '@/settings'
+interface Props {
+	title: string
+	description: string
+	image: string
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+
+const { title, description, image } = Astro.props
+---
+
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width,initial-scale=1' />
+<link rel='preconnect' href='https://fonts.googleapis.com' />
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link
+	rel='stylesheet'
+	href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap'
+/>
+<link
+	rel='icon'
+	type='image/svg+xml'
+	href='/favicon.svg'
+/>
+<meta name='generator' content={Astro.generator} />
+
+<!-- Sitemap -->
+<link rel="sitemap" href={`${template.base}/sitemap-index.xml`} />
+
+<!-- Canonical URL -->
+<link rel='canonical' href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name='title' content={title} />
+<meta name='description' content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property='og:type' content='website' />
+<meta property='og:url' content={Astro.url} />
+<meta property='og:title' content={title} />
+<meta property='og:description' content={description} />
+<meta property='og:image' content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property='twitter:card' content='summary_large_image' />
+<meta property='twitter:url' content={Astro.url} />
+<meta property='twitter:title' content={title} />
+<meta property='twitter:description' content={description} />
+<meta property='twitter:image' content={new URL(image, Astro.url)} />
+
+<script is:inline>
+	const themeStorageKey = 'portfolio-theme';
+	const darkTheme = 'synthwave';
+	const lightTheme = 'cupcake';
+	const allowedThemes = new Set([darkTheme, lightTheme]);
+
+	const getStoredTheme = () => {
+		const savedTheme = localStorage.getItem(themeStorageKey);
+		return savedTheme && allowedThemes.has(savedTheme) ? savedTheme : darkTheme;
+	};
+
+	const applyTheme = (theme) => {
+		document.documentElement.setAttribute('data-theme', theme);
+	};
+
+	const setTheme = (theme) => {
+		localStorage.setItem(themeStorageKey, theme);
+		applyTheme(theme);
+		syncToggleState();
+	};
+
+	const syncToggleState = () => {
+		const currentTheme = getStoredTheme();
+		document.querySelectorAll('[data-theme-toggle]').forEach((toggle) => {
+			if (toggle instanceof HTMLInputElement) {
+				toggle.checked = currentTheme === darkTheme;
+			}
+		});
+		document.querySelectorAll('[data-theme-label]').forEach((label) => {
+			label.textContent = currentTheme === darkTheme ? 'Synthwave' : 'Cupcake';
+		});
+	};
+
+	window.__portfolioTheme = {
+		get: getStoredTheme,
+		set: setTheme,
+		sync: syncToggleState,
+		themes: {
+			dark: darkTheme,
+			light: lightTheme,
+		},
+	};
+
+	applyTheme(getStoredTheme());
+
+	document.addEventListener('astro:after-swap', () => {
+		applyTheme(getStoredTheme());
+		queueMicrotask(syncToggleState);
+	});
+
+	document.addEventListener('astro:page-load', () => {
+		applyTheme(getStoredTheme());
+		syncToggleState();
+	});
+</script>

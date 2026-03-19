@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#140326"/>
+      <stop offset="50%" stop-color="#260a4b"/>
+      <stop offset="100%" stop-color="#090117"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7edb" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ff7edb" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="110" r="240" fill="url(#glow)"/>
+  <circle cx="180" cy="520" r="220" fill="url(#glow)"/>
+  <rect x="56" y="56" width="1088" height="518" rx="36" fill="none" stroke="#f472b6" stroke-opacity="0.25"/>
+  <text x="96" y="212" fill="#fdf2ff" font-family="Space Grotesk, Arial, sans-serif" font-size="72" font-weight="700">
+    Angadh Verma
+  </text>
+  <text x="96" y="302" fill="#f9a8d4" font-family="Space Grotesk, Arial, sans-serif" font-size="34" font-weight="500">
+    Software engineer building ML products, research systems, and full-stack tools
+  </text>
+  <text x="96" y="402" fill="#f5d0fe" font-family="IBM Plex Mono, monospace" font-size="26">
+    Industry / Research / Personal
+  </text>
+  <text x="96" y="452" fill="#f5d0fe" font-family="IBM Plex Mono, monospace" font-size="26">
+    GitHub Pages portfolio
+  </text>
+</svg>

@@ -1,0 +1,12 @@
+---
+import { profile } from '../../settings'
+
+const { fullName } = profile
+---
+
+<footer class='footer footer-center bg-base-100 px-4 py-8 text-base-content'>
+	<aside>
+		<p>Copyright © {new Date().getFullYear()} {fullName}</p>
+		<p class='text-sm text-base-content/70'>Built with Astro, Tailwind, and DaisyUI for GitHub Pages.</p>
+	</aside>
+</footer>

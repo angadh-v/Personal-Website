@@ -1,0 +1,47 @@
+---
+import type { Project } from '@/types/portfolio'
+
+interface Props {
+	project: Project
+	compact?: boolean
+}
+
+const { project, compact = false } = Astro.props
+
+---
+
+<article
+	id={project.slug}
+	class:list={[
+		'border border-base-content/10 bg-base-100 transition-colors hover:bg-base-200/40',
+		compact ? 'p-5' : 'p-6',
+	]}
+>
+	<div class='space-y-4'>
+		<div>
+			<h3 class='text-2xl font-bold'>{project.title}</h3>
+			<p class='mt-1 text-sm text-base-content/60'>
+				{project.organization} | {project.dates}
+			</p>
+		</div>
+		<p class='leading-relaxed text-base-content/76'>{project.summary}</p>
+		<p class='leading-relaxed text-base-content/70'>{project.impact}</p>
+	</div>
+
+	<p class='mt-4 text-sm text-base-content/60'>
+		<strong class='font-medium text-base-content/75'>Stack:</strong> {project.stack.join(', ')}
+	</p>
+
+	<div class='mt-6 flex flex-wrap gap-3'>
+		{project.links.map((link) => (
+			<a
+				href={link.href}
+				class='link link-hover text-sm'
+				target={link.external ? '_blank' : undefined}
+				rel={link.external ? 'noreferrer' : undefined}
+			>
+				{link.label}
+			</a>
+		))}
+	</div>
+</article>

@@ -1,0 +1,44 @@
+---
+import { profile } from '../../settings'
+import SocialIcons from './SocialIcons.astro'
+import { withBase } from '@/lib/utils'
+
+const { fullName, title, initials, location } = profile
+const navItems = [
+	{ label: 'Home', href: withBase('/') },
+	{ label: 'Projects', href: withBase('/projects') },
+	{ label: 'Experience', href: withBase('/experience') },
+	{ label: 'Resume', href: withBase('/resume') },
+	{ label: 'Contact', href: withBase('/#contact') },
+]
+---
+<aside
+	class='flex h-screen w-[20rem] flex-col bg-base-200 px-4 pt-4 text-base-content'
+>
+	<div class='my-8 flex h-full flex-col justify-between'>
+		<div>
+			<div class='flex flex-col items-center text-center'>
+				<div class='mask mask-circle grid size-32 place-items-center bg-base-300 text-4xl font-bold text-base-content'>
+					{initials}
+				</div>
+				<h1 class='mt-8 hidden text-lg font-black lg:block'>{fullName}</h1>
+				<p class='mt-2 text-sm text-base-content/70'>{title}</p>
+				<p class='mt-2 text-sm text-base-content/60'>{location}</p>
+			</div>
+
+			<div class='mx-4 mt-16'>
+				<ul class='menu menu-md grow shrink space-y-2 overflow-y-auto'>
+					{navItems.map((item) => (
+						<li>
+							<a href={item.href} class='text-lg'>{item.label}</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+
+		<div class='mx-4'>
+			<SocialIcons />
+		</div>
+	</div>
+</aside>
