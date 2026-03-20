@@ -20,9 +20,11 @@ const { project, compact = false } = Astro.props
 	<div class='space-y-4'>
 		<div>
 			<h3 class='text-2xl font-bold'>{project.title}</h3>
-			<p class='mt-1 text-sm text-base-content/60'>
-				{project.organization} | {project.dates}
-			</p>
+			{project.category !== 'personal' && (
+				<p class='mt-1 text-sm text-base-content/60'>
+					{project.organization} | {project.dates}
+				</p>
+			)}
 		</div>
 		<p class='leading-relaxed text-base-content/76'>{project.summary}</p>
 		<p class='leading-relaxed text-base-content/70'>{project.impact}</p>

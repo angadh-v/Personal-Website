@@ -38,6 +38,7 @@ export interface EducationEntry {
 	dates: string
 	description: string
 	honors: string[]
+	extracurricularInvolvement: ExperienceEntry[]
 	coursework: string[]
 	researchInterests: string[]
 }

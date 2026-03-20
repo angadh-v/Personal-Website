@@ -21,8 +21,8 @@ export const projects: Project[] = [
 		summary:
 			'Engineered a production-grade retrieval-augmented generation system using LangGraph to orchestrate multi-agent workflows for automated technical support querying.',
 		organization: 'Retail Realm Distribution',
-		dates: 'May 2025 - Aug 2025',
-		stack: ['Python', 'LangGraph', 'PySpark', 'SQL Server', 'Azure Blob Storage'],
+		dates: 'Summer 2025',
+		stack: ['PySpark', 'SQL Server', 'LangGraph', 'Ollama', 'Chroma Vector DB', 'Azure Blob Storage'],
 		impact:
 			'Built scalable PySpark pipelines over historical ticket data and analyzed failure modes in LLM outputs to improve resolution efficiency by 35%.',
 		links: [],
@@ -37,7 +37,7 @@ export const projects: Project[] = [
 			'Conducted geospatial analysis using ArcGIS to visualize bank ATM networks and perform demographic catchment-area analysis for expansion and optimization decisions.',
 		organization: 'Synechron',
 		dates: 'Consulting project',
-		stack: ['ArcGIS', 'Geospatial Analysis', 'Demographic Analysis'],
+		stack: ['ArcPy', 'R'],
 		impact:
 			'Turned spatial and demographic signals into practical recommendations for ATM placement and network optimization.',
 		links: [],
@@ -50,9 +50,9 @@ export const projects: Project[] = [
 		category: 'industry',
 		summary:
 			'Processed high-throughput FlightRadar24 data to design and implement a geometry-based aircraft collision detection algorithm.',
-		organization: 'IATA',
+		organization: 'International Air Transport Association (IATA)',
 		dates: 'Consulting project',
-		stack: ['Python', 'FlightRadar24 Data', 'Geometry', 'Safety Analytics'],
+		stack: ['Polars', 'Numpy'],
 		impact:
 			'Provided a ground-based safety layer for scenarios where onboard TCAS data is unavailable.',
 		links: [],
@@ -64,12 +64,12 @@ export const projects: Project[] = [
 		slug: 'farm-pond-causal-impact-analysis',
 		category: 'research',
 		summary:
-			'Investigated the causal impact of farm ponds on agricultural productivity using high-resolution satellite imagery processed through the Google Earth Engine Python API.',
+			'Investigated the causal impact of farm ponds on agricultural productivity using high-resolution Landsat-8 imagery processed through the Google Earth Engine Python API.',
 		organization: 'Indian Institute of Technology Delhi',
-		dates: 'Jun 2024 - Aug 2024',
-		stack: ['Google Earth Engine', 'Python', 'Differences-in-Differences', 'Double Machine Learning'],
+		dates: 'Summer 2024',
+		stack: ['Google Earth Engine', 'Rasterio', 'PsmPy','Matplotlib'],
 		impact:
-			'Implemented counterfactual matching and analyzed treatment effects on soil moisture and vegetation indices, contributing to a paper presented at ACM COMPASS.',
+			'Implemented counterfactual matching and analyzed treatment effects on soil moisture (NMI) and vegetation indices (NDVI), contributing to a paper presented at ACM COMPASS.',
 		links: [],
 		featured: false,
 		visibility: 'public',
@@ -80,12 +80,12 @@ export const projects: Project[] = [
 		category: 'research',
 		summary:
 			'Developed an ETL framework for aligning multilingual toxicity datasets and used an LLM for semantic schema matching across heterogeneous annotation labels.',
-		organization: 'Prof. Reihaneh Rabbany, Mila',
-		dates: 'Research project',
-		stack: ['Python', 'ETL', 'LLMs', 'Parquet', 'Schema Matching'],
+		organization: 'Honors Project',
+		dates: 'Complex Data Lab, Mila',
+		stack: ['Hugging Face Transformers', 'Selenium', 'LLMs', 'Parquet'],
 		impact:
 			'Implemented a schema-validated Parquet pipeline that improved storage, retrieval, and reproducibility for future work in the Mila Complex Data Lab.',
-		links: [],
+		links: [{ label: 'Code Repo and Report', href: 'https://github.com/angadh-v/Hate-Speech-Data-pipeline', external: true }],
 		featured: false,
 		visibility: 'public',
 	},
@@ -95,12 +95,12 @@ export const projects: Project[] = [
 		category: 'research',
 		summary:
 			'Benchmarked a novel time-window-based training strategy to address temporal information loss in dynamic link prediction across multiple models and datasets.',
-		organization: 'COMP 511 Project',
-		dates: 'Course project',
-		stack: ['PyTorch', 'Graph Neural Networks', 'Dynamic Link Prediction', 'Slurm', 'Compute Canada'],
+		organization: 'Class Project',
+		dates: 'COMP 511 Network Science',
+		stack: ['PyTorch Geometric', 'Graph Neural Networks', 'Slurm'],
 		impact:
 			'Ran ablation studies on Compute Canada HPC clusters and showed that sliding-window training improved link-prediction accuracy by up to 15% over batch baselines.',
-		links: [],
+		links: [{ label: 'Code Repo and Report', href: 'https://github.com/angadh-v/DyGLib', external: true }],
 		featured: false,
 		visibility: 'public',
 	},
@@ -110,12 +110,12 @@ export const projects: Project[] = [
 		category: 'research',
 		summary:
 			'Implemented a curriculum learning framework to train PPO agents in the Google Research Football environment, scaling task complexity from 1v1 to 11v11.',
-		organization: 'COMP 579 Project',
-		dates: 'Course project',
-		stack: ['Reinforcement Learning', 'PPO', 'Google Research Football', 'Python'],
+		organization: 'Class Project',
+		dates: 'COMP 579 Reinforcement Learning',
+		stack: [ 'OpenAI Gym','Google Research Football', 'PyTorch'],
 		impact:
 			'Authored a short paper evaluating the trade-offs between sample efficiency and convergence stability for scheduled reward shaping versus task-based progression.',
-		links: [],
+		links: [{ label: 'Code Repo and Report', href: 'https://github.com/emirusahin/GoogleFootball-C-HRL', external: true }],
 		featured: false,
 		visibility: 'public',
 	},
@@ -125,8 +125,8 @@ export const projects: Project[] = [
 		category: 'personal',
 		summary:
 			'Built a full-stack library management product with role-based access control, a multi-state borrowing workflow, and an AI-powered search and metadata assistant.',
-		organization: 'Personal project',
-		dates: '2025',
+		organization: '',
+		dates: '',
 		stack: ['Next.js', 'FastAPI', 'MySQL', 'Auth0', 'LangChain'],
 		impact:
 			'Combined product polish with practical AI workflows by enriching book metadata and handling fallback retrieval cleanly.',
@@ -140,9 +140,9 @@ export const projects: Project[] = [
 		category: 'personal',
 		summary:
 			'Built a full-stack web application that curates Polymarket trading data to identify and rank potentially insider-driven bets using residual analysis on an XGBoost model and a React frontend.',
-		organization: 'McHacks Best Beginner Project',
-		dates: '2025',
-		stack: ['React', 'Polars', 'FastAPI', 'SQLAlchemy', 'XGBoost', 'Auth0'],
+		organization: 'McHacks 2026',
+		dates: '',
+		stack: ['React', 'Polars', 'FastAPI', 'SQLAlchemy', 'XGBoost'],
 		impact:
 			'Designed the data-science pipeline and backend architecture using Polymarket APIs, Polars, FastAPI, SQLAlchemy, and Auth0.',
 		links: [],
@@ -155,30 +155,16 @@ export const projects: Project[] = [
 		category: 'personal',
 		summary:
 			'Designed an interactive credit risk dashboard around a predictive lending workflow, combining model outputs with KPI reporting for portfolio-level decision support.',
-		organization: 'Personal project',
-		dates: 'Course project',
-		stack: ['Python', 'Scikit-learn', 'Power BI', 'DAX'],
+		organization: '',
+		dates: '',
+		stack: ['Scikit-learn', 'Pandas', 'Power BI', 'DAX'],
 		impact:
 			'Modeled more than 100,000 LendingClub loan records and packaged the results into a business-facing dashboard.',
 		links: [],
 		featured: false,
 		visibility: 'public',
 	},
-	{
-		title: 'Chess Engine',
-		slug: 'chess-engine',
-		category: 'personal',
-		summary:
-			'Developed a two-player chess game in Java, implementing full game rules and turn-based logic through a modular object-oriented design.',
-		organization: 'Personal project',
-		dates: 'Course project',
-		stack: ['Java', 'JavaFX', 'JUnit', 'Object-Oriented Design'],
-		impact:
-			'Built an interactive JavaFX GUI for board visualization and wrote JUnit tests to validate core game logic and edge cases.',
-		links: [],
-		featured: false,
-		visibility: 'public',
-	},
+
 ]
 
 export const projectCategories: Array<{
@@ -226,33 +212,6 @@ export const experiences: ExperienceEntry[] = [
 			'Studied the causal impact of farm ponds on agricultural productivity through high-resolution satellite imagery and modern causal ML methods.',
 		relatedProjectSlugs: ['farm-pond-causal-impact-analysis'],
 	},
-	{
-		role: 'Software Designer',
-		organization: 'McGill Robotics Drone Team',
-		location: 'Montreal, Canada',
-		dates: 'Sept 2025 - Present',
-		summary:
-			'Designing embedded algorithms for real-time mapping, object recognition, and obstacle avoidance on NVIDIA Jetson for the SUAS competition.',
-		relatedProjectSlugs: [],
-	},
-	{
-		role: 'Co-coordinator, Rabbit Hole Kitchen',
-		organization: 'The Yellow Door Org',
-		location: 'Montreal, Canada',
-		dates: 'Sept 2025 - Present',
-		summary:
-			'Overseeing the operations of a weekly community kitchen geared toward underprivileged students and seniors.',
-		relatedProjectSlugs: [],
-	},
-	{
-		role: 'Technical Project Manager, MAIS 202',
-		organization: 'McGill AI Society',
-		location: 'Montreal, Canada',
-		dates: 'Oct 2024 - Apr 2025',
-		summary:
-			'Designed and graded machine learning assignments while providing technical guidance to more than 50 student participants.',
-		relatedProjectSlugs: [],
-	},
 ]
 
 export const education: EducationEntry[] = [
@@ -263,18 +222,56 @@ export const education: EducationEntry[] = [
 		dates: 'Jan 2022 - Apr 2026',
 		description: 'Statistics and Computer Science student at McGill University.',
 		honors: ["Dean's Honor List", 'Morris Wilson Renewable Scholarship'],
+		extracurricularInvolvement: [
+			{
+				role: 'Software Designer',
+				organization: 'McGill Robotics Drone Team',
+				location: '',
+				dates: 'Sept 2025 - Present',
+				summary:
+					'Designing embedded algorithms for real-time mapping, object recognition, and obstacle avoidance on NVIDIA Jetson for the SUAS competition.',
+				relatedProjectSlugs: [],
+			},
+			{
+				role: 'Co-coordinator, Rabbit Hole Kitchen',
+				organization: 'The Yellow Door Org',
+				location: '',
+				dates: 'Sept 2025 - Present',
+				summary:
+					'Overseeing the operations of a weekly community kitchen geared toward underprivileged students and seniors.',
+				relatedProjectSlugs: [],
+			},
+			{
+				role: 'Technical Project Manager, MAIS 202',
+				organization: 'McGill AI Society',
+				location: '',
+				dates: 'Oct 2024 - Apr 2025',
+				summary:
+					'Designed and graded machine learning assignments while providing technical guidance to more than 50 student participants.',
+				relatedProjectSlugs: [],
+			},
+			{
+				role: 'VP Events and Lounge',
+				organization: 'Society of Undergraduate Math Students (SUMS)',
+				location: '',
+				dates: 'Sept 2024 - Apr 2025',
+				summary:
+					'Assisted in organizing the Math Career Fair, Awkward mixer and Semi-formal events.',
+				relatedProjectSlugs: [],
+			},
+		],
 		coursework: [
 			'Network Science',
 			'Reinforcement Learning',
 			'Applied Machine Learning',
-			'Software Design',
-			'Stochastic Processes',
+			'Software Design', 'Algorithm Design',
+			'Stochastic Processes', 'Probability', 'Intermediate French',
 			'Communication History',
 		],
 		researchInterests: [
-			'AI for humanity',
+			'AI for Climate Change',
 			'Causal ML',
-			'Bayesian methods',
+			'Bayesian ML',
 			'Interpretability',
 		],
 	},

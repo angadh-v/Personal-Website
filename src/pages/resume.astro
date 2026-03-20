@@ -1,92 +1,228 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import SectionHeading from '@/components/ui/SectionHeading.astro'
-import { contact, education, experiences, skillGroups } from '@/data/portfolio'
-import { template } from '@/settings'
+import { contact } from '@/data/portfolio'
+import { social, template } from '@/settings'
+
+const resumePdf = `${template.base}/resume-angadh-verma.pdf`
+
+const educationEntry = {
+	school: 'McGill University',
+	location: 'Montreal, Canada',
+	degree: 'Bachelor of Arts in Computer Science and Statistics',
+	dates: 'Jan. 2022 - Apr. 2026',
+	details: "Dean's Honor List",
+}
+
+const experienceEntries = [
+	{
+		role: 'Software Developer Intern - Machine Learning',
+		organization: 'Retail Realm Distribution',
+		location: 'Sonoma, California (Remote)',
+		dates: 'May 2025 - Aug. 2025',
+		bullets: [
+			'Designed and deployed a fully local retrieval-augmented generation system using LangGraph-based agentic workflows to help technical support teams query historical ticket data, reducing average ticket resolution time by 35%.',
+			'Built an end-to-end data pipeline with Azure Blob Storage, SQL Server, and PySpark to populate a ChromaDB vector database, modeling issue-resolution relationships to improve retrieval quality and reduce hallucinations.',
+		],
+	},
+	{
+		role: 'Research Intern',
+		organization: 'Indian Institute of Technology',
+		location: 'New Delhi, India',
+		dates: 'Jun. 2024 - Aug. 2024',
+		bullets: [
+			'Automated a data-processing pipeline in Google Earth Engine and Python for geospatial satellite imagery used to study the impact of farm ponds on crop health (NDVI) and water security (NDMI).',
+			'Applied Differences-in-Differences and Double ML based causal analysis methods to estimate treatment effects across crop-yield, soil-moisture, and vegetation outcomes, contributing to a paper presented at ACM COMPASS.',
+		],
+	},
+]
+
+const projectEntries = [
+	{
+		title: 'BookFlow',
+		stack: 'Next.js, FastAPI, MySQL, Auth0, LangChain',
+		bullets: [
+			'Built a full-stack library management system with role-based access control via Auth0 JWT validation, a multi-state borrowing workflow, and an AI search assistant with LangChain and heuristic fallback handling.',
+			'Integrated an AI-powered metadata enrichment pipeline that auto-populates book genre, summary, and cover images using OpenAI-compatible LLMs with OpenLibrary as a structured fallback, deployed across Vercel, Render, and Aiven.',
+		],
+	},
+	{
+		title: 'InsideRadar',
+		stack: 'Polars, FastAPI, SQLAlchemy, XGBoost',
+		bullets: [
+			'Built a full-stack web application that streams and curates live Polymarket trading data to rank potentially insider-driven bets using residual analysis and outlier detection on an XGBoost model.',
+			'Implemented the data-science pipeline and backend architecture using Polymarket APIs, Polars for efficient feature engineering, FastAPI and SQLAlchemy for secure API endpoints, and Auth0 for authentication.',
+		],
+	},
+	{
+		title: 'Hate Speech Data Pipeline',
+		stack: 'ETL, LLMs',
+		bullets: [
+			'Developed an ETL framework for aligning hate-speech datasets and used OpenAI GPT-3.5 Turbo for semantic schema matching across heterogeneous annotation labels, improving reproducibility for future research in the Mila Complex Data Lab.',
+		],
+	},
+	{
+		title: 'Statistical Consulting',
+		stack: 'ArcGIS, Geospatial Analysis, Flight Data',
+		bullets: [
+			'Synechron: Conducted geospatial analysis using ArcGIS to visualize bank branch networks, perform statistical network analysis, and inform strategic ATM placement decisions for senior management.',
+			'IATA: Processed high-throughput FlightRadar24 data to create a geometry-based aircraft collision-detection algorithm, providing a secondary safety layer when onboard TCAS data is unavailable.',
+		],
+	},
+	{
+		title: 'Intelligent Credit Risk Portfolio Dashboard',
+		stack: 'Scikit-learn, Power BI',
+		bullets: [
+			'Designed an interactive dashboard with DAX-based financial KPIs on an end-to-end predictive analytics pipeline in Python and Scikit-learn to train a Random Forest model on more than 100,000 LendingClub loan records.',
+		],
+	},
+]
+
+const extracurricularEntries = [
+	{
+		role: 'Software Designer',
+		organization: 'McGill Robotics Drone Team',
+		dates: 'Sept. 2025 - Present',
+		bullets: [
+			'Developing embedded algorithms for real-time mapping and object detection on an autonomous drone.',
+		],
+	},
+	{
+		role: 'Co-coordinator',
+		organization: 'The Yellow Door Org',
+		dates: 'Sept. 2025 - Present',
+		bullets: [
+			'Manage and cook for a weekly community kitchen serving underprivileged students and seniors.',
+		],
+	},
+]
+
+const technicalSkills = [
+	{
+		title: 'Languages',
+		items: 'Python, SQL, Java, R, JavaScript',
+	},
+	{
+		title: 'Data & ML Tools',
+		items:
+			'SQL Server, PySpark, Databricks, Polars, Pandas, Scikit-learn, PyTorch, Keras, LangChain, LangGraph, Ollama, Vector DB, Power BI, Tableau',
+	},
+	{
+		title: 'Deployment',
+		items: 'Git, Docker, Vercel, Render, Streamlit',
+	},
+]
 ---
 
 <Layout title='Resume | Angadh Verma'>
 	<section class='border-b border-base-content/10 pb-12'>
 		<SectionHeading
 			eyebrow='Resume'
-			title='Resume'
-			description='A web version of the current CV.'
+			title='Angadh Verma'
+			description='Bachelor of Arts in Computer Science and Statistics'
 		/>
+	
 		<div class='mt-6 flex flex-wrap gap-3'>
-			<a href={`${template.base}/Angadh-CV.pdf`} class='btn btn-secondary' download>
+			<a href={resumePdf} class='btn btn-secondary' download>
 				Download PDF
-			</a>
-			<a href={`mailto:${contact.email}`} class='btn btn-outline'>
-				Email Angadh
 			</a>
 		</div>
 	</section>
 
-	<div class='grid gap-10 py-12 xl:grid-cols-[1.15fr_0.85fr]'>
-		<section class='space-y-10'>
-			<div class='border border-base-content/10 bg-base-100 p-6'>
-				<p class='font-medium text-base-content/60'>Profile</p>
-				<p class='mt-4 leading-relaxed text-base-content/75'>
-					Software engineer and applied ML builder with experience across production retrieval systems, causal geospatial research, and full-stack product development.
-				</p>
-			</div>
-
-			<div class='border border-base-content/10 bg-base-100 p-6'>
-				<p class='font-medium text-base-content/60'>Experience</p>
-				<div class='mt-6 space-y-6'>
-					{experiences.map((entry) => (
-						<div class='border-b border-base-content/10 pb-5 last:border-b-0 last:pb-0'>
-							<div class='flex flex-wrap items-start justify-between gap-3'>
-								<div>
-									<h2 class='text-lg font-bold'>{entry.role}</h2>
-									<p class='mt-1 text-base-content/70'>{entry.organization}</p>
-								</div>
-								<div class='text-right text-sm text-base-content/55'>
-									<div>{entry.dates}</div>
-									<div>{entry.location}</div>
-								</div>
-							</div>
-							<p class='mt-3 text-base-content/72'>{entry.summary}</p>
-						</div>
-					))}
+	<div class='max-w-4xl space-y-10 py-12'>
+		<section>
+			<h2 class='text-xl font-semibold text-base-content'>Education</h2>
+			<div class='mt-5 border-b border-base-content/10 pb-6'>
+				<div class='flex flex-wrap items-start justify-between gap-3'>
+					<div>
+						<h3 class='text-base font-semibold text-base-content'>{educationEntry.school}</h3>
+						<p class='mt-1 text-base-content/75'>{educationEntry.degree}</p>
+					</div>
+					<div class='text-right text-sm text-base-content/60'>
+						<div>{educationEntry.location}</div>
+						<div>{educationEntry.dates}</div>
+					</div>
 				</div>
+				<p class='mt-3 text-base-content/72'>{educationEntry.details}</p>
 			</div>
 		</section>
 
-		<section class='space-y-10'>
-			<div class='border border-base-content/10 bg-base-100 p-6'>
-				<p class='font-medium text-base-content/60'>Education</p>
-				<div class='mt-5 space-y-4'>
-					<h2 class='text-lg font-bold'>{education[0].degree}</h2>
-					<p>{education[0].school}</p>
-					<p class='text-base-content/70'>{education[0].location}</p>
-					<p class='text-base-content/70'>{education[0].dates}</p>
-					<p class='text-base-content/75'>{education[0].description}</p>
-					<p class='text-base-content/75'>
-						<strong class='font-medium text-base-content/80'>Honors:</strong> {education[0].honors.join(', ')}
-					</p>
-				</div>
-			</div>
-
-			<div class='border border-base-content/10 bg-base-100 p-6'>
-				<p class='font-medium text-base-content/60'>Skills</p>
-				<div class='mt-6 space-y-6'>
-					{skillGroups.map((group) => (
-						<div>
-							<h2 class='text-base font-bold'>{group.title}</h2>
-							<p class='mt-2 text-base-content/72'>{group.items.join(', ')}</p>
+		<section>
+			<h2 class='text-xl font-semibold text-base-content'>Experience</h2>
+			<div class='mt-5 space-y-6'>
+				{experienceEntries.map((entry) => (
+					<div class='border-b border-base-content/10 pb-6 last:border-b-0 last:pb-0'>
+						<div class='flex flex-wrap items-start justify-between gap-3'>
+							<div>
+								<h3 class='text-base font-semibold text-base-content'>{entry.role}</h3>
+								<p class='mt-1 text-base-content/75'>{entry.organization}</p>
+							</div>
+							<div class='text-right text-sm text-base-content/60'>
+								<div>{entry.dates}</div>
+								<div>{entry.location}</div>
+							</div>
 						</div>
-					))}
-				</div>
+						<ul class='mt-4 list-disc space-y-2 pl-5 text-base-content/72'>
+							{entry.bullets.map((bullet) => (
+								<li>{bullet}</li>
+							))}
+						</ul>
+					</div>
+				))}
 			</div>
+		</section>
 
-			<div class='border border-base-content/10 bg-base-100 p-6'>
-				<p class='font-medium text-base-content/60'>Contact</p>
-				<div class='mt-5 space-y-3 text-base-content/78'>
-					<p>{contact.email}</p>
-					<p>{contact.phone}</p>
-					<p>{contact.location}</p>
-				</div>
+		<section>
+			<h2 class='text-xl font-semibold text-base-content'>Projects</h2>
+			<div class='mt-5 space-y-6'>
+				{projectEntries.map((entry) => (
+					<div class='border-b border-base-content/10 pb-6 last:border-b-0 last:pb-0'>
+						<div>
+							<h3 class='text-base font-semibold text-base-content'>{entry.title}</h3>
+							<p class='mt-1 text-sm text-base-content/60'>{entry.stack}</p>
+						</div>
+						<ul class='mt-4 list-disc space-y-2 pl-5 text-base-content/72'>
+							{entry.bullets.map((bullet) => (
+								<li>{bullet}</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section>
+			<h2 class='text-xl font-semibold text-base-content'>Leadership / Extracurricular</h2>
+			<div class='mt-5 space-y-6'>
+				{extracurricularEntries.map((entry) => (
+					<div class='border-b border-base-content/10 pb-6 last:border-b-0 last:pb-0'>
+						<div class='flex flex-wrap items-start justify-between gap-3'>
+							<div>
+								<h3 class='text-base font-semibold text-base-content'>{entry.role}</h3>
+								<p class='mt-1 text-base-content/75'>{entry.organization}</p>
+							</div>
+							<div class='text-right text-sm text-base-content/60'>
+								<div>{entry.dates}</div>
+							</div>
+						</div>
+						<ul class='mt-4 list-disc space-y-2 pl-5 text-base-content/72'>
+							{entry.bullets.map((bullet) => (
+								<li>{bullet}</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section>
+			<h2 class='text-xl font-semibold text-base-content'>Technical Skills</h2>
+			<div class='mt-5 space-y-4'>
+				{technicalSkills.map((group) => (
+					<p class='text-base-content/72'>
+						<strong class='font-medium text-base-content'>{group.title}:</strong> {group.items}
+					</p>
+				))}
 			</div>
 		</section>
 	</div>
