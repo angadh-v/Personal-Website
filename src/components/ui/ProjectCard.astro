@@ -7,18 +7,32 @@ interface Props {
 }
 
 const { project, compact = false } = Astro.props
+const accentStyles = {
+	industry:
+		'--project-tint: hsl(var(--p) / 0.16); --project-glow: hsl(var(--p) / 0.18); --project-line: hsl(var(--p) / 0.82);',
+	research:
+		'--project-tint: hsl(var(--s) / 0.16); --project-glow: hsl(var(--s) / 0.16); --project-line: hsl(var(--s) / 0.82);',
+	personal:
+		'--project-tint: hsl(var(--a) / 0.16); --project-glow: hsl(var(--a) / 0.16); --project-line: hsl(var(--a) / 0.82);',
+}[project.category]
 
 ---
 
 <article
 	id={project.slug}
 	class:list={[
-		'border border-base-content/10 bg-base-100 transition-colors hover:bg-base-200/40',
+		'project-card relative isolate overflow-hidden rounded-[1.75rem] border border-base-content/10 bg-base-100/95 shadow-[0_18px_45px_hsl(var(--bc)/0.08)] transition duration-300 hover:-translate-y-1 hover:border-base-content/20',
 		compact ? 'p-5' : 'p-6',
 	]}
+	style={accentStyles}
 >
-	<div class='space-y-4'>
-		<div>
+	<div class='project-card__wash'></div>
+	<div class='project-card__mesh'></div>
+	<div class='project-card__line'></div>
+
+	<div class='relative z-10 space-y-5'>
+		<div class='space-y-3'>
+			<div class='project-card__accent-bar'></div>
 			<h3 class='text-2xl font-bold'>{project.title}</h3>
 			{project.category !== 'personal' && (
 				<p class='mt-1 text-sm text-base-content/60'>
@@ -28,22 +42,91 @@ const { project, compact = false } = Astro.props
 		</div>
 		<p class='leading-relaxed text-base-content/76'>{project.summary}</p>
 		<p class='leading-relaxed text-base-content/70'>{project.impact}</p>
-	</div>
 
-	<p class='mt-4 text-sm text-base-content/60'>
-		<strong class='font-medium text-base-content/75'>Stack:</strong> {project.stack.join(', ')}
-	</p>
+		<div class='project-card__stack rounded-2xl border border-base-content/10 px-4 py-3 text-sm text-base-content/65'>
+			<strong class='font-medium text-base-content/78'>Stack:</strong> {project.stack.join(', ')}
+		</div>
 
-	<div class='mt-6 flex flex-wrap gap-3'>
-		{project.links.map((link) => (
-			<a
-				href={link.href}
-				class='link link-hover text-sm'
-				target={link.external ? '_blank' : undefined}
-				rel={link.external ? 'noreferrer' : undefined}
-			>
-				{link.label}
-			</a>
-		))}
+		<div class='flex flex-wrap gap-3'>
+			{project.links.map((link) => (
+				<a
+					href={link.href}
+					class='project-card__link text-sm font-medium'
+					target={link.external ? '_blank' : undefined}
+					rel={link.external ? 'noreferrer' : undefined}
+				>
+					{link.label}
+				</a>
+			))}
+		</div>
 	</div>
 </article>
+
+<style>
+	.project-card__wash,
+	.project-card__mesh,
+	.project-card__line {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	.project-card__wash {
+		background:
+			radial-gradient(circle at 16% 18%, var(--project-tint), transparent 26%),
+			radial-gradient(circle at 84% 20%, hsl(var(--b1) / 0), transparent 20%),
+			linear-gradient(140deg, hsl(var(--b1) / 0.96), hsl(var(--b1) / 0.86));
+	}
+
+	.project-card__mesh {
+		background:
+			linear-gradient(to right, hsl(var(--bc) / 0.04) 1px, transparent 1px),
+			linear-gradient(to bottom, hsl(var(--bc) / 0.04) 1px, transparent 1px);
+		background-size: 6.5rem 6.5rem;
+		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.38), transparent 70%);
+	}
+
+	.project-card__line {
+		inset: 0 auto auto 0;
+		height: 3px;
+		width: 100%;
+		background: linear-gradient(90deg, var(--project-line), transparent 72%);
+	}
+
+	.project-card__accent-bar {
+		height: 0.35rem;
+		width: 4.5rem;
+		border-radius: 9999px;
+		background: linear-gradient(90deg, var(--project-line), transparent);
+		box-shadow: 0 0 22px var(--project-glow);
+	}
+
+	.project-card__stack {
+		background: linear-gradient(135deg, var(--project-tint), transparent 160%);
+		backdrop-filter: blur(10px);
+	}
+
+	.project-card__link {
+		color: var(--project-line);
+		text-decoration: none;
+		transition:
+			color 160ms ease,
+			transform 160ms ease;
+	}
+
+	.project-card__link:hover {
+		color: hsl(var(--bc));
+		transform: translateX(2px);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.project-card,
+		.project-card__link {
+			transition: none;
+		}
+
+		.project-card:hover {
+			transform: none;
+		}
+	}
+</style>

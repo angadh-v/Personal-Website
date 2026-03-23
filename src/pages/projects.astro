@@ -18,11 +18,12 @@ const projectsByCategory = projectCategories.map((category) => ({
 			title='Projects'
 			description='Industry, research, and personal work are grouped separately.'
 		/>
-		<div class='mt-6 tabs tabs-boxed w-fit'>
+		<div class='project-tabs mt-6 inline-flex w-fit rounded-full border border-base-content/10 bg-[linear-gradient(135deg,hsl(var(--p)/0.12),transparent_55%),hsl(var(--b2)/0.8)] p-1 shadow-[0_12px_30px_hsl(var(--bc)/0.06)] backdrop-blur'>
 			{projectCategories.map((category) => (
 				<button
 					type='button'
-					class='tab'
+					class='tab rounded-full border-0 bg-transparent px-5'
+					data-project-color={category.id}
 					data-project-tab={category.id}
 					aria-controls={`panel-${category.id}`}
 				>
@@ -36,7 +37,7 @@ const projectsByCategory = projectCategories.map((category) => ({
 		{projectsByCategory.map((group) => (
 			<section
 				id={`panel-${group.id}`}
-				class='max-w-3xl'
+				class='w-full'
 				data-project-panel={group.id}
 				hidden={group.id !== defaultCategory}
 			>
@@ -101,3 +102,45 @@ const projectsByCategory = projectCategories.map((category) => ({
 	setupProjectTabs();
 	document.addEventListener('astro:page-load', setupProjectTabs);
 </script>
+
+<style>
+	.project-tabs .tab {
+		color: hsl(var(--bc) / 0.7);
+		transition:
+			background-color 160ms ease,
+			color 160ms ease,
+			box-shadow 160ms ease,
+			transform 160ms ease;
+	}
+
+	.project-tabs .tab:hover {
+		color: hsl(var(--bc));
+		background: hsl(var(--b1) / 0.5);
+	}
+
+	.project-tabs .tab.tab-active {
+		color: hsl(var(--bc));
+		box-shadow: 0 8px 20px hsl(var(--bc) / 0.08);
+	}
+
+	.project-tabs .tab[data-project-color='industry'].tab-active {
+		background: linear-gradient(90deg, hsl(var(--p) / 0.2), hsl(var(--p) / 0.08));
+		color: hsl(var(--p));
+	}
+
+	.project-tabs .tab[data-project-color='research'].tab-active {
+		background: linear-gradient(90deg, hsl(var(--s) / 0.2), hsl(var(--s) / 0.08));
+		color: hsl(var(--s));
+	}
+
+	.project-tabs .tab[data-project-color='personal'].tab-active {
+		background: linear-gradient(90deg, hsl(var(--a) / 0.2), hsl(var(--a) / 0.08));
+		color: hsl(var(--a));
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.project-tabs .tab {
+			transition: none;
+		}
+	}
+</style>

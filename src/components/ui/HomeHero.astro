@@ -1,0 +1,253 @@
+---
+import { profile } from '@/settings'
+
+const roles = profile.heroRoles
+const longestRole = [...roles].sort((left, right) => right.length - left.length)[0]
+---
+
+<section class='relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-b border-base-content/10'>
+	<div class='mx-auto max-w-6xl px-6 pb-14 pt-6 lg:px-8 lg:pb-20 lg:pt-10'>
+		<div class='hero-shell px-8 py-10 lg:px-12 lg:py-14'>
+			<div class='hero-scribble hero-scribble-ring'></div>
+			<div class='hero-scribble hero-scribble-cross'></div>
+			<div class='hero-scribble hero-scribble-dash'></div>
+			<div class='hero-scribble hero-scribble-diamond'></div>
+
+			<div class='relative z-10'>
+				<p class='text-4xl font-bold tracking-tight text-base-content/85 lg:text-6xl'>
+					Hello!
+				</p>
+
+				<h1 class='mt-8 max-w-6xl text-[clamp(3rem,8vw,7rem)] font-bold leading-[0.95] tracking-tight'>
+					<span class='text-base-content'>I'm</span>
+					<span class='ml-4 inline whitespace-nowrap text-primary lg:ml-6'>{profile.fullName}</span>
+				</h1>
+
+				<div class='mt-8 min-h-[2.5rem] text-2xl font-medium tracking-tight text-base-content/78 lg:min-h-[3rem] lg:text-4xl'>
+					<span class='sr-only'>{roles.join(', ')}</span>
+					<div class='role-rotator' aria-hidden='true'>
+						<span class='role-measure'>{longestRole}</span>
+						{roles.map((role, index) => (
+							<span class='role-item' style={`animation-delay: ${index * 3}s;`}>{role}</span>
+						))}
+					</div>
+				</div>
+
+				<p class='mt-6 max-w-3xl text-lg leading-relaxed text-base-content/78 lg:text-xl'>
+					{profile.heroSummary}
+				</p>
+
+				<!-- <div class='mt-8 flex flex-wrap gap-3'>
+					<a href={withBase('/projects')} class='btn btn-secondary'>
+						View Projects
+					</a>
+					<a href={`${withBase('/resume')}`} class='btn btn-outline'>
+						View Resume
+					</a>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero-shell {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid hsl(var(--bc) / 0.12);
+		border-radius: 2rem;
+		background:
+			radial-gradient(circle at 12% 20%, hsl(var(--p) / 0.14), transparent 28%),
+			radial-gradient(circle at 72% 22%, hsl(var(--s) / 0.09), transparent 24%),
+			linear-gradient(to right, hsl(var(--bc) / 0.05) 1px, transparent 1px),
+			linear-gradient(to bottom, hsl(var(--bc) / 0.05) 1px, transparent 1px),
+			hsl(var(--b1));
+		background-size: auto, auto, 10.5rem 10.5rem, 10.5rem 10.5rem, auto;
+		box-shadow: 0 24px 60px hsl(var(--bc) / 0.08);
+	}
+
+	.hero-shell::before,
+	.hero-shell::after {
+		content: '';
+		position: absolute;
+		border-radius: 9999px;
+		pointer-events: none;
+	}
+
+	.hero-shell::before {
+		top: -5rem;
+		right: 12%;
+		width: 18rem;
+		height: 18rem;
+		background: radial-gradient(circle, hsl(var(--p) / 0.14), transparent 70%);
+		filter: blur(18px);
+	}
+
+	.hero-shell::after {
+		bottom: -6rem;
+		left: 6%;
+		width: 16rem;
+		height: 16rem;
+		background: radial-gradient(circle, hsl(var(--in) / 0.12), transparent 72%);
+		filter: blur(20px);
+	}
+
+	.hero-wave {
+		transform-origin: 70% 70%;
+		animation: hero-wave 2.4s ease-in-out infinite;
+	}
+
+	.role-rotator {
+		position: relative;
+		display: inline-grid;
+		align-items: start;
+	}
+
+	.role-measure {
+		visibility: hidden;
+		white-space: nowrap;
+		grid-area: 1 / 1;
+	}
+
+	.role-item {
+		grid-area: 1 / 1;
+		white-space: nowrap;
+		opacity: 0;
+		transform: translateY(0.45em);
+		animation: hero-role-cycle 9s infinite;
+		will-change: transform, opacity;
+	}
+
+	.hero-scribble {
+		position: absolute;
+		opacity: 0.28;
+		pointer-events: none;
+	}
+
+	.hero-scribble-ring {
+		top: 1.2rem;
+		left: 42%;
+		width: 1.4rem;
+		height: 1.4rem;
+		border: 1px solid hsl(var(--bc) / 0.12);
+		border-radius: 9999px;
+	}
+
+	.hero-scribble-cross {
+		top: 2.8rem;
+		right: 14%;
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	.hero-scribble-cross::before,
+	.hero-scribble-cross::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 100%;
+		height: 1px;
+		background: hsl(var(--bc) / 0.12);
+	}
+
+	.hero-scribble-cross::before {
+		transform: translate(-50%, -50%) rotate(14deg);
+	}
+
+	.hero-scribble-cross::after {
+		transform: translate(-50%, -50%) rotate(104deg);
+	}
+
+	.hero-scribble-dash {
+		right: 7%;
+		top: 46%;
+		width: 2.5rem;
+		height: 0.7rem;
+	}
+
+	.hero-scribble-dash::before,
+	.hero-scribble-dash::after {
+		content: '';
+		position: absolute;
+		width: 1.15rem;
+		height: 1px;
+		background: hsl(var(--bc) / 0.1);
+		transform: rotate(12deg);
+	}
+
+	.hero-scribble-dash::after {
+		right: 0;
+		top: 0.35rem;
+	}
+
+	.hero-scribble-diamond {
+		right: 12%;
+		bottom: 1.2rem;
+		width: 1rem;
+		height: 1rem;
+		border: 1px solid hsl(var(--bc) / 0.1);
+		transform: rotate(20deg);
+	}
+
+	@keyframes hero-wave {
+		0%,
+		55%,
+		100% {
+			transform: rotate(0deg);
+		}
+		10% {
+			transform: rotate(16deg);
+		}
+		20% {
+			transform: rotate(-10deg);
+		}
+		30% {
+			transform: rotate(12deg);
+		}
+		40% {
+			transform: rotate(-4deg);
+		}
+	}
+
+	@keyframes hero-role-cycle {
+		0%,
+		7% {
+			opacity: 0;
+			transform: translateY(0.45em);
+		}
+		12%,
+		28% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		33%,
+		100% {
+			opacity: 0;
+			transform: translateY(-0.35em);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-wave,
+		.role-item {
+			animation: none;
+		}
+
+		.role-item {
+			opacity: 0;
+			transform: none;
+		}
+
+		.role-item:first-of-type {
+			opacity: 1;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.hero-shell {
+			border-radius: 1.5rem;
+			background-size: auto, auto, 7rem 7rem, 7rem 7rem, auto;
+		}
+	}
+</style>

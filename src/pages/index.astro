@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import HomeHero from '@/components/ui/HomeHero.astro'
 import SectionHeading from '@/components/ui/SectionHeading.astro'
-import SocialIcons from '@/components/ui/SocialIcons.astro'
-import { profile, template } from '@/settings'
 import {
 	contact,
 	education,
@@ -10,52 +9,7 @@ import {
 ---
 
 <Layout>
-	<section class='grid gap-12 border-b border-base-content/10 pb-12 lg:grid-cols-[1.35fr_0.85fr] lg:items-center'>
-		<div class='space-y-6'>
-			<div class='space-y-5'>
-				<h1 class='max-w-4xl text-5xl font-bold leading-tight text-base-content lg:text-6xl'>
-					{profile.fullName}
-				</h1>
-				<p class='max-w-2xl text-xl text-base-content/75'>
-					{profile.title}
-				</p>
-				<p class='max-w-3xl text-lg leading-relaxed text-base-content/78'>
-					{profile.heroSummary}
-				</p>
-			</div>
+	<HomeHero />
 
-			<div class='flex flex-wrap gap-3'>
-				<a href={`${template.base}/projects`} class='btn btn-secondary'>
-					View Projects
-				</a>
-				<a href={`${template.base}/resume-angadh-verma.pdf`} download class='btn btn-outline'>
-					Download Resume
-				</a>
-			</div>
-		</div>
 
-		<!-- <div class='border border-base-content/10 bg-base-200 p-8'>
-			<p class='text-sm leading-relaxed text-base-content/70'>{profile.location}</p>
-			<p class='mt-4 text-base leading-relaxed text-base-content/70'>
-				Industry projects, research work, and personal products are separated so each body of work can be browsed on its own terms.
-			</p>
-			<div class='mt-6 max-w-xs'>
-				<SocialIcons />
-			</div>
-		</div> -->
-	</section>
-
-	<section class='py-12' id='contact'>
-		<SectionHeading
-			eyebrow='Contact'
-			title=''
-		/>
-		<div class='mt-6 space-y-3 text-base-content/75'>
-			<p>{contact.email}</p>
-			<p>{contact.phone}</p>
-			<p>{contact.location}</p>
-			<p>{education[0].school}</p>
-			
-		</div>
-	</section>
 </Layout>

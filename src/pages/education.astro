@@ -20,8 +20,8 @@ const currentEducation = education[0]
 
 	<div class='space-y-10 py-12'>
 
-		<section class='border border-base-content/10 bg-base-100 p-6'>
-			<p class='font-medium text-base-content/60'>Awards</p>
+		<section class='rounded-[1.75rem] border border-base-content/10 bg-[linear-gradient(135deg,hsl(var(--p)/0.14),transparent_42%),hsl(var(--b1)/0.9)] p-6 shadow-[0_18px_40px_hsl(var(--bc)/0.06)]'>
+			<p class='font-medium text-primary'>Awards</p>
 			<ul class='mt-4 space-y-2 text-base-content/75'>
 				{currentEducation.honors.map((item) => (
 					<li>{item}</li>
@@ -29,8 +29,8 @@ const currentEducation = education[0]
 			</ul>
 		</section>
 
-		<section class='border border-base-content/10 bg-base-100 p-6'>
-			<p class='font-medium text-base-content/60'>Extracurricular Involvement</p>
+		<section class='rounded-[1.75rem] border border-base-content/10 bg-[linear-gradient(135deg,hsl(var(--s)/0.12),transparent_42%),hsl(var(--b1)/0.9)] p-6 shadow-[0_18px_40px_hsl(var(--bc)/0.06)]'>
+			<p class='font-medium text-secondary'>Extracurricular Involvement</p>
 			<div class='mt-6 space-y-6'>
 				{currentEducation.extracurricularInvolvement.map((entry) => (
 					<div class='border-b border-base-content/10 pb-5 last:border-b-0 last:pb-0'>
@@ -50,13 +50,13 @@ const currentEducation = education[0]
 			</div>
 		</section>
 
-		<section class='border border-base-content/10 bg-base-100 p-6'>
-			<p class='font-medium text-base-content/60'>Selected Coursework</p>
+		<section class='rounded-[1.75rem] border border-base-content/10 bg-[linear-gradient(135deg,hsl(var(--a)/0.12),transparent_42%),hsl(var(--b1)/0.9)] p-6 shadow-[0_18px_40px_hsl(var(--bc)/0.06)]'>
+			<p class='font-medium text-accent'>Selected Coursework</p>
 			<p class='mt-4 text-base-content/75'>{currentEducation.coursework.join(', ')}</p>
 		</section>
 
-		<section class='border border-base-content/10 bg-base-100 p-6'>
-			<p class='font-medium text-base-content/60'>Research Interests</p>
+		<section class='rounded-[1.75rem] border border-base-content/10 bg-[linear-gradient(135deg,hsl(var(--in)/0.12),transparent_42%),hsl(var(--b1)/0.9)] p-6 shadow-[0_18px_40px_hsl(var(--bc)/0.06)]'>
+			<p class='font-medium text-info'>Research Interests</p>
 			<p class='mt-4 text-base-content/75'>{currentEducation.researchInterests.join(', ')}</p>
 		</section>
 	</div>

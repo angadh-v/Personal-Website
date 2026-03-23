@@ -32,8 +32,8 @@ const {
 	<body class='font-[Space_Grotesk] text-base-content'>
 		<div class={`drawer lg:drawer-open ${template.menu_left ? 'drawer-end' : ''}`}>
 			<input id='my-drawer' type='checkbox' class='drawer-toggle' />
-			<div class='drawer-content bg-base-100'>
-				<div class='sticky top-0 z-50 border-b border-base-content/10 bg-base-100 text-base-content'>
+			<div class='drawer-content app-surface bg-base-100'>
+				<div class='sticky top-0 z-50 border-b border-base-content/10 bg-base-100/78 text-base-content backdrop-blur-xl'>
 					<nav class='navbar mx-auto max-w-6xl px-6'>
 						<div class='navbar-start'>
 							{template.menu_left &&
@@ -66,7 +66,7 @@ const {
 						</div>
 					</nav>
 				</div>
-				<main class='mx-auto flex min-h-screen max-w-5xl flex-col justify-between px-6 pb-8 pt-10 lg:px-8 lg:pt-16'>
+				<main class='mx-auto flex min-h-screen w-full max-w-6xl flex-col justify-between px-6 pb-8 pt-10 lg:px-8 lg:pt-16'>
 					<slot />
 					<Footer />
 				</main>
@@ -90,6 +90,14 @@ const {
 
 	body {
 		font-family: 'Space Grotesk', 'Avenir Next', 'Segoe UI', sans-serif;
+	}
+
+	.app-surface {
+		background:
+			radial-gradient(circle at 6% 10%, hsl(var(--p) / 0.08), transparent 22%),
+			radial-gradient(circle at 92% 16%, hsl(var(--a) / 0.07), transparent 18%),
+			radial-gradient(circle at 54% 100%, hsl(var(--s) / 0.05), transparent 20%),
+			hsl(var(--b1));
 	}
 
 	code,

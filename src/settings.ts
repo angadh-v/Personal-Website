@@ -1,10 +1,11 @@
 export const profile = {
 	fullName: 'Angadh Verma',
 	initials: 'AV',
-	title: '',
+	title: 'Data Scientist, Software Engineer, Research Developer',
+	heroRoles: ['Data Scientist', 'Software Engineer', 'Research Developer'],
 	location: 'Montreal, Canada',
 	heroSummary:
-		'I love working with data. \n My work spans industry, research, and personal projects that turn messy data into cool insights.',
+		'I love working with data. ',
 }
 
 export const social = {

@@ -15,18 +15,17 @@ const navItems = [
 ]
 ---
 <aside
-	class='flex h-screen w-[20rem] flex-col bg-base-200 px-4 pt-4 text-base-content'
+	class='flex h-screen w-[20rem] flex-col border-r border-base-content/10 bg-[radial-gradient(circle_at_top,hsl(var(--p)/0.14),transparent_34%),linear-gradient(180deg,hsl(var(--b2)),hsl(var(--b1))_28%,hsl(var(--b2)))] px-4 pt-4 text-base-content'
 >
 	<div class='my-8 flex h-full flex-col justify-between'>
 		<div>
 			<div class='flex flex-col items-center text-center'>
 				<Image
-					class='mask mask-circle size-32 object-cover'
+					class='mask mask-circle size-32 border border-primary/30 object-cover shadow-[0_0_0_6px_hsl(var(--p)/0.1)]'
 					src={ProfilePicture}
 					alt={`Profile picture of ${fullName}`}
 				/>
 				<h1 class='mt-8 hidden text-lg font-black lg:block'>{fullName}</h1>
-				<p class='mt-2 text-sm text-base-content/70'>{title}</p>
 				<p class='mt-2 text-sm text-base-content/60'>{location}</p>
 			</div>
 
@@ -34,14 +33,19 @@ const navItems = [
 				<ul class='menu menu-md grow shrink space-y-2 overflow-y-auto'>
 					{navItems.map((item) => (
 						<li>
-							<a href={item.href} class='text-lg'>{item.label}</a>
+							<a
+								href={item.href}
+								class='rounded-2xl px-4 py-3 text-lg transition-all duration-200 hover:bg-secondary/12 hover:text-secondary'
+							>
+								{item.label}
+							</a>
 						</li>
 					))}
 				</ul>
 			</div>
 		</div>
 
-		<div class='mx-4'>
+		<div class='mx-4 rounded-3xl border border-base-content/10 bg-base-100/45 p-3 backdrop-blur'>
 			<SocialIcons />
 		</div>
 	</div>
